@@ -9,29 +9,39 @@ public class Main {
         System.out.print("Enter Student Name: ");
         String name = input.nextLine();
 
-        System.out.print("Enter Marks: ");
-        int marks = input.nextInt();
+        try {
 
-        String grade;
+            System.out.print("Enter Marks: ");
+            int marks = input.nextInt();
 
-        if(marks >= 80)
-            grade = "A";
-        else if(marks >= 70)
-            grade = "B";
-        else if(marks >= 60)
-            grade = "C";
-        else
-            grade = "Fail";
+            if(marks < 0 || marks > 100)
+                throw new Exception("Invalid Marks");
 
-        double percentage = (marks / 100.0) * 100;
+            String grade;
 
-        System.out.println("Student: " + name);
-        System.out.println("Grade: " + grade);
-        System.out.println("Percentage: " + percentage + "%");
+            if(marks >= 80)
+                grade = "A";
+            else if(marks >= 70)
+                grade = "B";
+            else if(marks >= 60)
+                grade = "C";
+            else
+                grade = "Fail";
 
-        if(marks >= 50)
-            System.out.println("Status: Pass");
-        else
-            System.out.println("Status: Fail");
+            double percentage = (marks / 100.0) * 100;
+
+            System.out.println("Student: " + name);
+            System.out.println("Grade: " + grade);
+            System.out.println("Percentage: " + percentage + "%");
+
+            if(marks >= 50)
+                System.out.println("Status: Pass");
+            else
+                System.out.println("Status: Fail");
+
+        } catch(Exception e) {
+
+            System.out.println(e.getMessage());
+        }
     }
 }
